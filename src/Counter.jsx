@@ -1,26 +1,32 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 export function Counter() {
-    let [countX, setCountX] = useState(0);
-    let [countY, setCountY] = useState(0);
+    const [countX, setCountX] = useState(0);
+    const [countY, setCountY] = useState(0);
 
-    let incrementX = () => {
-        setCountX(currCount => currCount + 1);
-    }
-    let incrementY = () => {
-        setCountY(currCount => currCount + 1);
-    }
+    const incrementX = () => {
+        setCountX((currCount) => currCount + 1);
+    };
+
+    const incrementY = () => {
+        setCountY((currCount) => currCount + 1);
+    };
 
     useEffect(() => {
-        console.log("This is side-effect");
+        console.log("Count Y changed:", countY);
     }, [countY]);
-    return (
-        <>
-            <h3>Count = {countX}</h3>
-            <button onClick={incrementX}>+1</button>
 
-            <h3>Count = {countY}</h3>
-            <button onClick={incrementY}>+1</button>
-        </>
-    )
+    return (
+        <div>
+            <h1>Counter Component</h1>
+            <div>
+                <h3>Count X = {countX}</h3>
+                <button onClick={incrementX}>Increment X</button>
+            </div>
+            <div>
+                <h3>Count Y = {countY}</h3>
+                <button onClick={incrementY}>Increment Y</button>
+            </div>
+        </div>
+    );
 }
